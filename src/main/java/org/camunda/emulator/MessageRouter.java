@@ -2,8 +2,10 @@ package org.camunda.emulator;
 
 import io.nats.client.MessageHandler;
 import org.camunda.emulator.messageHandlers.autoService.*;
+import org.camunda.emulator.messageHandlers.clientFeedback.FeedbackAssignTeleconsultantServiceTaskHandler;
+import org.camunda.emulator.messageHandlers.clientFeedback.FeedbackTeleconsultantCallUserTaskHandler;
+import org.camunda.emulator.messageHandlers.clientFeedback.FeedbackUserTaskHandler;
 import org.camunda.emulator.messageHandlers.dumpHandler;
-import org.camunda.emulator.messageHandlers.test.TestHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,8 +25,12 @@ public class MessageRouter {
         mapping.put("auto.mobile-service.service-company.assign-mobile.s-task", new MobileServiceAssignmentServiceTaskHandler());
         mapping.put("auto.mobile-service.service-company.provide-online-service.u-task", new ProvideOnlineServiceUserTaskHandler());
         mapping.put("auto.mobile-service.service-company.provide-mob-service.u-task", new ProvideMobileServiceUserTaskHandler());
-       // mapping.put("auto.mobile-service.client.give-fdbk.u-task", new FeedbackUserTaskHandler());
-        mapping.put("test-task", new TestHandler());
+
+        //mapping.put("client-feedback.client.feedback.u-task", new FeedbackUserTaskHandler());
+        mapping.put("client-feedback.teleconsultant.assign.s-task", new FeedbackAssignTeleconsultantServiceTaskHandler());
+        mapping.put("client-feedback.teleconsultant.call-client.u-task", new FeedbackTeleconsultantCallUserTaskHandler());
+
+        //mapping.put("test-task", new TestHandler());
 
         return mapping;
     }

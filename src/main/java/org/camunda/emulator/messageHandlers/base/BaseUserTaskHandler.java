@@ -14,7 +14,7 @@ public abstract class BaseUserTaskHandler implements MessageHandler {
 
     private static final Logger logger = LoggerFactory.getLogger("CamundaUserTaskDebugLogger");
 
-    protected JSONObject setVariables(JSONObject currentVariables) {
+    protected JSONObject setVariables(JSONObject currentVariables) throws InterruptedException {
         return currentVariables;
     }
 
